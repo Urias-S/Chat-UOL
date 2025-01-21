@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat UOL</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="overlay hidden">
+  <div class="background"></div>
+  <section class="messageData">
+    <h2>Escolha um contato para enviar mensagem:</h2>
+    <article class="contacts">
+      <button class="contact">
+        <div class="username">
+          <ion-icon name="people"></ion-icon>
+          <h3>Todos</h3>
+        </div>
+      </button>
+      <button class="contact">
+        <div class="username">
+          <ion-icon name="person-circle"></ion-icon>
+          <h3>João</h3>
+        </div>
+      </button>
+      <button class="contact">
+        <div class="username">
+          <ion-icon name="person-circle"></ion-icon>
+          <h3>Maria</h3>
+        </div>
+        <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
+      </button>
+    </article>
+    <h2>Escolha a visibilidade:</h2>
+    <article class="visibility">
+      <button>
+        <div class="publicType">
+          <ion-icon name="lock-open"></ion-icon>
+          <h3>Público</h3>
+        </div>
+      </button>
+      <button>
+        <div class="publicType">
+          <ion-icon name="lock-closed"></ion-icon>
+          <h3>Reservadamente</h3>
+        </div>
+        <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
+      </button>
+    </article>
+  </section>
+</div>
+  <header>
+    <img src="images/logo.png" />
+    <ion-icon name="people"></ion-icon>
+  </header>
+  <article class="messages">
+    <span class="message" id="join">
+      <span class="time">(09:21:45)</span>
+      <span class="content">João entra na sala...</span>
+    </span>
+    <span class="message" id="publicMessage">
+      <span class="time">(09:22:28)</span>
+      <span class="content">João para Todos: Bom dia</span>
+    </span>
+    <span class="message" id="publicMessage">
+      <span class="time">(09:22:38) </span>
+      <span class="content">Maria para João: Oi João :)</span>
+    </span>
+    <span class="message" id="privateMessage">
+      <span class="time">(09:22:48)</span>
+      <span class="content">João reservadamente para Maria: Oi gatinha quer tc?</span>
+    </span>
+    <span class="message" id="join">
+      <span class="time">(09:22:58)</span>
+      <span class="content">Maria sai da sala...</span>
+    </span>
+  </article>
+  <section class="send">
+    <div class="text-area">
+      <input type="text" placeholder="Escreva aqui...">
+      <span>Enviando para todos (público)</span>
+    </div>
+    <ion-icon name="paper-plane-outline"></ion-icon>
+  </section>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

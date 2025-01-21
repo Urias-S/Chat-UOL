@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", serif;
+}
+
+
+@media (max-width: 768px) {
+  .hidden {
+    display:none;
+  }
+  .background {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+
+  .messageData {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 65vw;
+    background-color: white;
+    z-index: 3;
+    overflow-y: scroll;
+  }
+
+  .messageData h2 {
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: center;
+    padding: 30px 25px;
+  }
+
+  .contact {
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    background-color: transparent;
+    padding: 5px 20px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .contact h3 {
+    font-size: 15px;
+    margin-left: 8px;
+  }
+
+
+  .username {
+    display: flex;
+    align-items: center;
+
+  }
+
+  button ion-icon {
+    font-size: 35px;
+  }
+
+  .checkmark {
+    font-size: 20px;
+    color: rgba(40, 187, 37, 1);
+    --ionicon-stroke-width: 64px;
+  }
+
+  .visibility {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .visibility button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+  }
+
+  .publicType {
+    display: flex;
+    align-items: center;
+  }
+
+  .publicType h3 {
+    font-size: 15px;
+    margin-left: 8px;
+  }
+
+  .publicType ion-icon {
+    font-size: 28px;
+  }
+
+  body {
+    background-color: rgba(243, 243, 243, 1);
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    height: 15vh;
+    padding: 0px 20px;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  header img {
+    height: 65px;
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  header ion-icon {
+    width: 60px;
+    height: auto;
+    color: black;
+  }
+
+  .messages {
+    height: 75vh;
+    padding-top: 30px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+
+  .message {
+    border-radius: 2px;
+    padding: 15px 10px 15px 10px;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  #join {
+    background-color: rgba(220, 220, 220, 1);
+  }
+
+  #publicMessage {
+    background-color: white;
+  }
+
+  #privateMessage {
+    background-color: rgba(255, 222, 222, 1);
+  }
+
+  .send {
+    height: 10vh;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px -4px 6px 0px rgba(0, 0, 0, 0.05);
+
+  }
+
+  .text-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .text-area span {
+    color: gray;
+  }
+
+  .text-area input {
+    font-size: 22px;
+    color: black;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 5px;
+
+  }
+
+  .text-area input::placeholder {
+    color: black;
+    font-style: italic;
+  }
+
+  .send ion-icon {
+    font-size: 40px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
