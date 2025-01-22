@@ -1,10 +1,11 @@
-const UUID = "b281e7d0-bed8-44dd-9c89-f7e360495cd6";
+const UUID = "05947be4-192e-4286-b7c8-c035a60c9b57";
 const requisitionsLinkParticipants = "https://mock-api.driven.com.br/api/v6/uol/participants/" + UUID;
 const requisitionsLinkStatus = "https://mock-api.driven.com.br/api/v6/uol/status/" + UUID;
 const requisitionsLinkMessages = "https://mock-api.driven.com.br/api/v6/uol/messages/" + UUID;
 let currentUser;
 let username;
 let messages = [];
+let lastMessageCount = 0;
 const loggin = () => {
   username = prompt("Qual é o seu nome?");
   const user = {
@@ -20,7 +21,6 @@ const userValidation = (user) => {
 
 const setUser = (user) => {
   currentUser = username;
-  getMessages();
 }
 const alredyLogged = (requisition) => {
   if (requisition.status === 400) {
@@ -37,8 +37,8 @@ const maintainConnection = () => {
   promise.catch(disconnected);
 }
 const disconnected = () => {
-  getMessages();
   clearInterval(connectionInterval);
+  loggin();
 }
 const getMessages = () => {
   const promise = axios.get(requisitionsLinkMessages);
@@ -49,6 +49,7 @@ const getMessages = () => {
 const renderizeMessages = (requisition) => {
   messages = requisition.data;
   const messagesContainer = document.querySelector(".messages");
+  messagesContainer.innerHTML = '';
   for (let i = 0; i < messages.length; i++) {
     switch (messages[i].type) {
       case "status":
@@ -76,10 +77,19 @@ const renderizeMessages = (requisition) => {
         `;
         break;
     }
+
+    if (messages.length > lastMessageCount) {
+      const lastMessage = messagesContainer.lastElementChild;
+      if (lastMessage) {
+        lastMessage.scrollIntoView();
+      }
+    }
   }
+  lastMessageCount = messages.length;
 }
 const errorMessage = () => {
   alert("Ocorreu algum erro, tente novamente mais tarde!");
 }
 loggin();
 const connectionInterval = setInterval(maintainConnection, 5000);
+const getMessagesInterval = setInterval(getMessages, 3000);
