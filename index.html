@@ -7,62 +7,32 @@
   <title>Chat UOL</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
-<div class="overlay hidden">
-  <div class="background"></div>
-  <section class="messageData">
-    <h2>Escolha um contato para enviar mensagem:</h2>
-    <article class="contacts">
-      <button class="contact">
-        <div class="username">
-          <ion-icon name="people"></ion-icon>
-          <h3>Todos</h3>
-        </div>
-      </button>
-      <button class="contact">
-        <div class="username">
-          <ion-icon name="person-circle"></ion-icon>
-          <h3>João</h3>
-        </div>
-      </button>
-      <button class="contact">
-        <div class="username">
-          <ion-icon name="person-circle"></ion-icon>
-          <h3>Maria</h3>
-        </div>
-        <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
-      </button>
-    </article>
-    <h2>Escolha a visibilidade:</h2>
-    <article class="visibility">
-      <button>
-        <div class="publicType">
-          <ion-icon name="lock-open"></ion-icon>
-          <h3>Público</h3>
-        </div>
-      </button>
-      <button>
-        <div class="publicType">
-          <ion-icon name="lock-closed"></ion-icon>
-          <h3>Reservadamente</h3>
-        </div>
-        <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
-      </button>
-    </article>
-  </section>
-</div>
+  <div class="overlay">
+    <div class="background hidden" onclick="closeUsers()"></div>
+    <section class="messageData hidden">
+      <h2>Escolha um contato para enviar mensagem:</h2>
+      <article class="contacts">
+      </article>
+      <h2>Escolha a visibilidade:</h2>
+      <article class="visibility">
+      </article>
+    </section>
+  </div>
   <header>
     <img src="images/logo.png" />
-    <ion-icon name="people"></ion-icon>
+    <button class="users" onclick="showUsers()">
+      <ion-icon name="people"></ion-icon>
+    </button>
   </header>
   <article class="messages">
   </article>
   <section class="send">
     <div class="text-area">
-      <input type="text" placeholder="Escreva aqui...">
-      <span>Enviando para todos (público)</span>
+      <input type="text" placeholder="Escreva aqui..." class="messageContent">
     </div>
     <ion-icon name="paper-plane-outline"></ion-icon>
   </section>
