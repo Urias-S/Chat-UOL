@@ -1,4 +1,4 @@
-const UUID = "ccccbc19-778c-49b3-8970-1bdf885ee69e";
+const UUID = "a324d202-2a0c-4854-a187-6b9305bff896";
 const requisitionsLinkParticipants = "https://mock-api.driven.com.br/api/v6/uol/participants/" + UUID;
 const requisitionsLinkStatus = "https://mock-api.driven.com.br/api/v6/uol/status/" + UUID;
 const requisitionsLinkMessages = "https://mock-api.driven.com.br/api/v6/uol/messages/" + UUID;
