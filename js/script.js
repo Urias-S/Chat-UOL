@@ -1,4 +1,4 @@
-const UUID = "05947be4-192e-4286-b7c8-c035a60c9b57";
+const UUID = "ccccbc19-778c-49b3-8970-1bdf885ee69e";
 const requisitionsLinkParticipants = "https://mock-api.driven.com.br/api/v6/uol/participants/" + UUID;
 const requisitionsLinkStatus = "https://mock-api.driven.com.br/api/v6/uol/status/" + UUID;
 const requisitionsLinkMessages = "https://mock-api.driven.com.br/api/v6/uol/messages/" + UUID;
@@ -133,6 +133,14 @@ const renderizeUsers = (requisition) => {
   }
   let usersOnline = requisition.data;
   usersOnlineCount = usersOnline.length;
+  usersContainer.innerHTML = `
+<button class="contact checkmarked" onclick = "selectUser(this)">
+  <div class="username">
+    <ion-icon name="people"></ion-icon>
+    <h3>Todos</h3>
+  </div>
+  <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
+</button>`
   for (let i = 0; i < usersOnline.length; i++) {
     if (usersOnline[i].name !== currentUser) {
       usersContainer.innerHTML += `
@@ -162,6 +170,7 @@ const selectUser = (element) => {
   checkmarkIonIcon.setAttribute('name', 'checkmark-outline');
   checkmarkIonIcon.setAttribute('class', 'checkmark');
   element.appendChild(checkmarkIonIcon);
+  changeMessagePublic();
 }
 
 const selectPublic = (element) => {
@@ -180,6 +189,7 @@ const selectPublic = (element) => {
   checkmarkIonIcon.setAttribute('name', 'checkmark-outline');
   checkmarkIonIcon.setAttribute('class', 'checkmark');
   element.appendChild(checkmarkIonIcon);
+  changeMessagePublic();
 }
 
 const renderizeVisibility = () => {
@@ -221,11 +231,70 @@ const renderizeVisibility = () => {
   buttonPrivate.setAttribute('onclick', 'selectPublic(this)');
 }
 
+const changeMessagePublic = () => {
+  const textArea = document.querySelector('.text-area');
+  const span = document.createElement('span');
+  const visibility = document.querySelector('.visibility');
+  const markedVisibility = visibility.querySelector('.checkmarked');
+  const markedH3 = markedVisibility.querySelector('h3');
+  const contacts = document.querySelector('.contacts')
+  const markedContact = contacts.querySelector('.checkmarked');
+  const markedContactH3 = markedContact.querySelector('h3');
+  let publicMessageType;
+  let userMessageName;
+
+  if (textArea.querySelector('span')) {
+    const spanToRemove = textArea.querySelector('span');
+    textArea.removeChild(spanToRemove);
+  }
+
+  if (markedVisibility || markedContact) {
+    publicMessageType = markedH3.innerHTML;
+    userMessageName = markedContactH3.innerHTML;
+
+  }
+
+  span.innerHTML = `Enviando para ${userMessageName} (${publicMessageType})`;
+  textArea.appendChild(span);
+}
+
+const sendMessage = () => {
+  const contacts = document.querySelector('.contacts')
+  const markedContact = contacts.querySelector('.checkmarked');
+  const markedContactH3 = markedContact.querySelector('h3');
+  const input = document.querySelector('.messageContent');
+  const visibility = document.querySelector('.visibility');
+  const markedVisibility = visibility.querySelector('.checkmarked');
+  const markedH3 = markedVisibility.querySelector('h3');
+  let messageType;
+
+  if (markedH3.innerHTML === 'Público') {
+    messageType = 'message';
+  } else if (markedH3.innerHTML === 'Reservadamente') {
+    messageType = 'private_message';
+  }
+  const messageToSend = {
+    from: currentUser,
+    to: markedContactH3.innerHTML,
+    text: input.value,
+    type: messageType,
+  }
+
+  const promise = axios.post(requisitionsLinkMessages + UUID, messageToSend);
+  promise.then(getMessages);
+  promise.catch(reloadPage);
+  input.value = '';
+}
+ 
+const reloadPage = () => {
+  window.location.reload();
+}
 loggin();
 getMessages();
 searchUser();
 renderizeVisibility();
 defaultPublic();
+changeMessagePublic();
 const connectionInterval = setInterval(maintainConnection, 5000);
 const getMessagesInterval = setInterval(getMessages, 3000);
-const usersInterval = setInterval(searchUser, 5000);
+const usersInterval = setInterval(searchUser, 10000);
