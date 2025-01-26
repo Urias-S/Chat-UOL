@@ -71,12 +71,14 @@ const renderizeMessages = (requisition) => {
         `;
         break;
       case "private_message":
-        messagesContainer.innerHTML += `
-            <span class="message" id="privateMessage">
-              <span class="time">(${messages[i].time})</span>
-              <span class="content">${messages[i].from} ${messages[i].text}</span>
-            </span>
-        `;
+        if (messages[i].from === currentUser || messages[i].to === currentUser) {
+          messagesContainer.innerHTML += `
+          <span class="message" id="privateMessage">
+            <span class="time">(${messages[i].time})</span>
+            <span class="content">${messages[i].from} ${messages[i].text}</span>
+          </span>
+      `;
+        }
         break;
     }
 
