@@ -282,7 +282,7 @@ const sendMessage = () => {
     type: messageType,
   }
 
-  const promise = axios.post(requisitionsLinkMessages + UUID, messageToSend);
+  const promise = axios.post(requisitionsLinkMessages, messageToSend);
   promise.then(getMessages);
   promise.catch(reloadPage);
   input.value = '';
