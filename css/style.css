@@ -209,3 +209,7 @@ body {
     --animate-duration: 0.5s;
   }
 }
+
+strong {
+  font-weight: bold;
+}

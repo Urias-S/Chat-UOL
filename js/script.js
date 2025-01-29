@@ -58,7 +58,7 @@ const renderizeMessages = (requisition) => {
         messagesContainer.innerHTML += `
             <span class="message" id="join">
               <span class="time">(${messages[i].time})</span>
-              <span class="content">${messages[i].from} ${messages[i].text}</span>
+              <span class="content"><strong>${messages[i].from}</strong> ${messages[i].text}</span>
             </span>
         `;
         break;
@@ -66,7 +66,7 @@ const renderizeMessages = (requisition) => {
         messagesContainer.innerHTML += `
             <span class="message" id="publicMessage">
               <span class="time">(${messages[i].time})</span>
-              <span class="content">${messages[i].from} ${messages[i].text}</span>
+              <span class="content"><strong>${messages[i].from}</strong> para <strong>${messages[i].to}</strong>: ${messages[i].text}</span>
             </span>
         `;
         break;
@@ -75,7 +75,7 @@ const renderizeMessages = (requisition) => {
           messagesContainer.innerHTML += `
           <span class="message" id="privateMessage">
             <span class="time">(${messages[i].time})</span>
-            <span class="content">${messages[i].from} ${messages[i].text}</span>
+            <span class="content"><strong>${messages[i].from}</strong> reservadamente para <strong>${messages[i].to}</strong>: ${messages[i].text}</span>
           </span>
       `;
         }
